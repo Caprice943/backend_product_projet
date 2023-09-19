@@ -1,9 +1,17 @@
 package com.example.backendappproduits.models;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.Date;
 
+@AllArgsConstructor
+@Getter
+@Setter
 @Entity
 public class Produit {
     @Id
@@ -16,12 +24,9 @@ public class Produit {
     @ManyToOne
     private Categorie categorie;
 
-
-
     public Produit() {
         super();
     }
-
 
     public Produit(String nomProduit, Double prixProduit, Date dateCreation) {
         super();
@@ -30,7 +35,7 @@ public class Produit {
         this.dateCreation = dateCreation;
     }
 
-
+/*
     public Long getIdProduit() {
         return idProduit;
     }
@@ -61,7 +66,7 @@ public class Produit {
     public void setCategorie(Categorie categorie) {
         this.categorie = categorie;
     }
-
+*/
 
     @Override
     public String toString() {
