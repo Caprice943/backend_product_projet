@@ -8,50 +8,49 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
-@CrossOrigin(origins = "http://localhost:8080")
+@RequestMapping("/api/produits")
+@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "false")
 public class ProduitRestController {
 
     @Autowired
     ProduitService produitService;
 
-    @RequestMapping(method= RequestMethod.GET)
+    //@RequestMapping(method= RequestMethod.GET)
+    @GetMapping(value = "/all")
     public List<Produit> getAllProduits() {
 
         return produitService.getAllProduits();
 
     }
 
-    @RequestMapping(value="/{id}",method = RequestMethod.GET)
+    @GetMapping(value="/{id}")
     public Produit getProduitById(@PathVariable("id") Long id)
     {
         return produitService.getProduit(id);
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @PostMapping(value = "/createProduct")
     public Produit createProduit(@RequestBody Produit produit)
     {
         return produitService.saveProduit(produit);
     }
 
-    @RequestMapping(method = RequestMethod.PUT)
+    @PutMapping(value = "/updateProduct")
     public Produit updateProduit(@RequestBody Produit produit)
     {
         return produitService.updateProduit(produit);
     }
 
-    @RequestMapping(value="/{id}",method = RequestMethod.DELETE)
+    @DeleteMapping(value = "/deleteProduct/{id}")
     public void deleteProduit(@PathVariable("id") Long id)
     {
         produitService.deleteProduitById(id);
     }
 
-    @RequestMapping(value="/prodscat/{idCat}",method = RequestMethod.GET)
+    @GetMapping(value = "/prodscat/{idCat}")
     public List<Produit> getProduitsByCatId(@PathVariable("idCat") Long idCat)
     {
         return produitService.findByCategorieIdCat(idCat);
     }
-
-
 
 }
