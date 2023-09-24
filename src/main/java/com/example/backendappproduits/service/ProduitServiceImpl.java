@@ -5,6 +5,7 @@ import com.example.backendappproduits.models.Produit;
 import com.example.backendappproduits.repository.ProduitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -84,6 +85,12 @@ public class ProduitServiceImpl implements ProduitService {
     @Override
     public List<Produit> trierProduitsNomsPrix() {
         return produitRepository.trierProduitsNomsPrix();
+    }
+
+    @Override
+    @Transactional
+    public List<Produit> searchProductByNameProdOrCat(String nameProd) {
+        return produitRepository.searchProduitsByNameProdOrCat(nameProd);
     }
 
 }

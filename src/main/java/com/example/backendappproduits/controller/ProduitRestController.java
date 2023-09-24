@@ -53,4 +53,9 @@ public class ProduitRestController {
         return produitService.findByCategorieIdCat(idCat);
     }
 
+    @GetMapping(value = "/searchProd/{nameProd}")
+    public List<Produit> getProduitByNameOrCategory(@PathVariable("nameProd") String nameProd){
+        return produitService.searchProductByNameProdOrCat(nameProd);
+    }
+
 }

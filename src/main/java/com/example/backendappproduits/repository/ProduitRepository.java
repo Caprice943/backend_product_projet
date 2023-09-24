@@ -1,7 +1,5 @@
 package com.example.backendappproduits.repository;
 
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
-
 import com.example.backendappproduits.models.Categorie;
 import com.example.backendappproduits.models.Produit;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,6 +13,7 @@ import java.util.List;
 public interface ProduitRepository extends JpaRepository<Produit, Long> {
 
     List<Produit> findByNomProduit(String nom);
+
     List<Produit> findByNomProduitContains(String nom);
 
 	/*
@@ -22,11 +21,12 @@ public interface ProduitRepository extends JpaRepository<Produit, Long> {
 	List<Produit> findByNomPrix (String nom, Double prix);
 	*/
 
-    @Query("select p from Produit p where p.nomProduit like %:nom and p.prixProduit > :prix") //paramètres nommés
-    List<Produit> findByNomPrix (@Param("nom") String nom, @Param("prix") Double prix);
+    @Query("select p from Produit p where p.nomProduit like %:nom and p.prixProduit > :prix")
+        //paramètres nommés
+    List<Produit> findByNomPrix(@Param("nom") String nom, @Param("prix") Double prix);
 
     @Query("select p from Produit p where p.categorie = :cat")
-    List<Produit> findByCategorie (@Param("cat") Categorie categorie);
+    List<Produit> findByCategorie(@Param("cat") Categorie categorie);
 
     List<Produit> findByCategorieIdCat(Long id);
 
@@ -35,4 +35,8 @@ public interface ProduitRepository extends JpaRepository<Produit, Long> {
     @Query("select p from Produit p order by p.nomProduit ASC , p.prixProduit ASC")
     List<Produit> trierProduitsNomsPrix();
 
+    @Query("SELECT p FROM Produit p " +
+            "INNER JOIN p.categorie c " +
+            "WHERE p.nomProduit LIKE %:searchItem% OR c.nomCat LIKE %:searchItem%")
+    List<Produit> searchProduitsByNameProdOrCat(@Param("searchItem") String searchItem);
 }

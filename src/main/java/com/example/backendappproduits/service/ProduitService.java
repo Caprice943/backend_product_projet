@@ -19,4 +19,5 @@ public interface ProduitService {
     List<Produit> findByCategorieIdCat(Long id);
     List<Produit> findByOrderByNomProduitAsc();
     List<Produit> trierProduitsNomsPrix();
+    List<Produit> searchProductByNameProdOrCat(String nameProd);
 }
