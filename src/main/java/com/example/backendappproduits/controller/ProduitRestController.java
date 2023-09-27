@@ -15,7 +15,6 @@ public class ProduitRestController {
     @Autowired
     ProduitService produitService;
 
-    //@RequestMapping(method= RequestMethod.GET)
     @GetMapping(value = "/all")
     public List<Produit> getAllProduits() {
 
@@ -23,38 +22,33 @@ public class ProduitRestController {
 
     }
 
-    @GetMapping(value="/{id}")
-    public Produit getProduitById(@PathVariable("id") Long id)
-    {
+    @GetMapping(value = "/{id}")
+    public Produit getProduitById(@PathVariable("id") Long id) {
         return produitService.getProduit(id);
     }
 
     @PostMapping(value = "/createProduct")
-    public Produit createProduit(@RequestBody Produit produit)
-    {
+    public Produit createProduit(@RequestBody Produit produit) {
         return produitService.saveProduit(produit);
     }
 
     @PutMapping(value = "/updateProduct")
-    public Produit updateProduit(@RequestBody Produit produit)
-    {
+    public Produit updateProduit(@RequestBody Produit produit) {
         return produitService.updateProduit(produit);
     }
 
     @DeleteMapping(value = "/deleteProduct/{id}")
-    public void deleteProduit(@PathVariable("id") Long id)
-    {
+    public void deleteProduit(@PathVariable("id") Long id) {
         produitService.deleteProduitById(id);
     }
 
     @GetMapping(value = "/prodscat/{idCat}")
-    public List<Produit> getProduitsByCatId(@PathVariable("idCat") Long idCat)
-    {
+    public List<Produit> getProduitsByCatId(@PathVariable("idCat") Long idCat) {
         return produitService.findByCategorieIdCat(idCat);
     }
 
     @GetMapping(value = "/searchProd/{nameProd}")
-    public List<Produit> getProduitByNameOrCategory(@PathVariable("nameProd") String nameProd){
+    public List<Produit> getProduitByNameOrCategory(@PathVariable("nameProd") String nameProd) {
         return produitService.searchProductByNameProdOrCat(nameProd);
     }
 
