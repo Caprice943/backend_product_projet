@@ -13,6 +13,11 @@ public class CategorieServiceImpl implements CategorieService{
     CategorieRepository catRepo;
 
     @Override
+    public Categorie getCatById(Long id) {
+        return catRepo.findById(id).get();
+    }
+
+    @Override
     public Categorie saveCategory(Categorie c) {
         return catRepo.save(c);
     }
