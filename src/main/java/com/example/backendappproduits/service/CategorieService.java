@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface CategorieService {
 
+    Categorie getCatById( Long id);
+
     Categorie saveCategory( Categorie c);
 
     Categorie updateCategory( Categorie c);
@@ -13,6 +15,8 @@ public interface CategorieService {
      void deleteCategoryById(Long id);
 
     List<Categorie> getAllCat();
+
+
 
 
 }

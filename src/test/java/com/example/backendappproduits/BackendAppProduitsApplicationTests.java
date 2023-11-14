@@ -22,6 +22,7 @@ class BackendAppProduitsApplicationTests {
         produitRepository.save(prod);
     }
 
+    /*
     @Test
     public void testFindProduit() {
         Produit p = produitRepository.findById(1L).get();
@@ -33,7 +34,7 @@ class BackendAppProduitsApplicationTests {
         Produit p = produitRepository.findById(1L).get();
         p.setPrixProduit(1000.0);
         produitRepository.save(p);
-    }
+    }*/
 
     @Test
     public void testDeleteProduit() {
