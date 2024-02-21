@@ -12,7 +12,7 @@ import io.swagger.v3.oas.annotations.servers.Server;
                         email = "heredyamouiri@gmail.com"
                 ),
                 description = "OpenAPI documentation for backend application products",
-                title = "OpenAPI documentation API - Caprice",
+                title = "OpenAPI documentation - Caprice",
                 version = "1.0",
                 termsOfService = "Terms of service"
         ),
